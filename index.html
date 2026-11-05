@@ -79,7 +79,7 @@ style="--hover-glow:#8bdcff;--hover-border:#d6b45a;display:block;width:100%;back
 </div>
 
 <!-- FOOTER -->
-<div style="text-align:center;padding:10px;color:#54748e;font-size:13px;font-style:italic;">&ldquo;Meow Meeeeow&rdquo; &nbsp;- once said by a hungry cat</div>
+<div style="text-align:center;padding:10px;color:#54748e;font-size:13px;font-style:italic;">&ldquo;&rdquo; &nbsp;- </div>
 <div style="height:1px;background:#d6b45a;margin:6px 0 12px;"></div>
 <div style="text-align:center;color:#8b713c;font-size:9px;letter-spacing:4px;">P A W N &bull; S T A R S &bull; E S T . 2 0 2 6</div>
 
