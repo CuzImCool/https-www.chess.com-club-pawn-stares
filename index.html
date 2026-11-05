@@ -1,1 +1,86 @@
 
+<div id="itu-theme" style="position:relative;background:#eaf6ff;color:#153653;padding:16px;border:1px solid #d6b45a;border-radius:14px;font-family:Arial,sans-serif;">
+
+<style>
+#itu-theme a[data-hover-button],
+#itu-theme button[data-hover-button] {
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease, background .22s ease, border-color .22s ease;
+}
+#itu-theme a[data-hover-button]:hover,
+#itu-theme button[data-hover-button]:hover {
+  transform: translateY(-2px) scale(1.025);
+  filter: brightness(1.12);
+  box-shadow: 0 0 16px var(--hover-glow, #8bdcff), 0 0 28px var(--hover-glow, #8bdcff);
+  border-color: var(--hover-border, #d6b45a) !important;
+}
+#itu-theme a[data-hover-button]:active,
+#itu-theme button[data-hover-button]:active {
+  transform: scale(.99);
+}
+#itu-theme .itu-cat-rain {
+  position:absolute;
+  top:-40px;
+  z-index:9999;
+  pointer-events:none;
+  animation:ituCatFall linear forwards;
+  line-height:1;
+}
+@keyframes ituCatFall {
+  0% { transform:translateY(-30px) rotate(0deg); opacity:0; }
+  10% { opacity:1; }
+  90% { opacity:1; }
+  100% { transform:translateY(750px) rotate(360deg); opacity:0; }
+}
+</style>
+
+<!-- STAR RAIN BUTTON -->
+<button data-hover-button data-hover-color="#79cfff" data-hover-border="#d6b45a"
+onclick="
+var box=document.getElementById('itu-theme');
+var cats=['💫','💎','⭐️','✨'];
+for(var i=0;i<32;i++){
+  (function(){
+    var cat=document.createElement('span');
+    cat.className='itu-cat-rain';
+    cat.textContent=cats[Math.floor(Math.random()*cats.length)];
+    cat.style.left=(Math.random()*92)+'%';
+    cat.style.fontSize=(18+Math.random()*20)+'px';
+    cat.style.animationDuration=(2.5+Math.random()*2.5)+'s';
+    cat.style.animationDelay=(Math.random()*1.8)+'s';
+    box.appendChild(cat);
+    setTimeout(function(){cat.remove();},7500);
+  })();
+}
+"
+style="--hover-glow:#8bdcff;--hover-border:#d6b45a;display:block;width:100%;background:#d9f0ff;color:#153653;border:1px solid #d6b45a;border-radius:9px;padding:12px;margin-bottom:14px;font-size:20px;cursor:pointer;">💫💎⭐️✨</button>
+
+<!-- HEADER -->
+<div style="text-align:center;padding:20px 8px;background:linear-gradient(135deg,#bce8ff,#ffffff,#d8efff);border:2px solid #d6b45a;border-radius:12px;margin-bottom:14px;">
+  <div style="font-size:28px;font-weight:900;letter-spacing:4px;color:#248ac5;text-shadow:0 0 12px #8bdcff;">♞ PAWN STARS ♞</div>
+  <div style="font-size:10px;letter-spacing:5px;color:#b18b35;margin-top:8px;">C L U B</div>
+  <div style="font-size:10px;letter-spacing:3px;color:#54748e;margin-top:12px;">PLAY &bull; LEARN &bull; GROW</div>
+</div>
+
+<!-- NAVIGATION -->
+<div style="background:#ffffff;border:1px solid #d6b45a;border-radius:12px;padding:14px;margin-bottom:14px;">
+  <div style="text-align:center;font-size:13px;font-weight:bold;letter-spacing:3px;margin-bottom:12px;color:#248ac5;">✦ NAVIGATION ✦</div>
+
+  <a data-hover-button data-hover-color="#8bdcff" data-hover-border="#d6b45a"
+  href="https://www.chess.com/club/pawn-stares"
+  style="--hover-glow:#8bdcff;--hover-border:#d6b45a;display:block;background:#e5f5ff;color:#153653;text-decoration:none;border:1px solid #a9dfff;border-radius:8px;padding:12px;margin:8px 0;font-weight:bold;">♟ &nbsp; CLUB HOME &rarr;</a>
+
+  <a data-hover-button data-hover-color="#8bdcff" data-hover-border="#d6b45a"
+  href="https://www.chess.com/clubs/members/pawn-stares"
+  style="--hover-glow:#8bdcff;--hover-border:#d6b45a;display:block;background:#e5f5ff;color:#153653;text-decoration:none;border:1px solid #a9dfff;border-radius:8px;padding:12px;margin:8px 0;font-weight:bold;">♙ &nbsp; MEMBERS &rarr;</a>
+
+  <a data-hover-button data-hover-color="#8bdcff" data-hover-border="#d6b45a"
+  href="https://www.chess.com/clubs/events/pawn-stares"
+  style="--hover-glow:#8bdcff;--hover-border:#d6b45a;display:block;background:#e5f5ff;color:#153653;text-decoration:none;border:1px solid #a9dfff;border-radius:8px;padding:12px;margin:8px 0;font-weight:bold;">⚡ &nbsp; EVENTS &rarr;</a>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:10px;color:#54748e;font-size:13px;font-style:italic;">&ldquo;Meow Meeeeow&rdquo; &nbsp;- once said by a hungry cat</div>
+<div style="height:1px;background:#d6b45a;margin:6px 0 12px;"></div>
+<div style="text-align:center;color:#8b713c;font-size:9px;letter-spacing:4px;">P A W N &bull; S T A R S &bull; E S T . 2 0 2 6</div>
+
+</div>
