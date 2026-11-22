@@ -1,80 +1,433 @@
+
 <style>
 html,body{margin:0!important;padding:0!important;background:#eaf6ff!important;overflow-x:hidden}
 #pawn-stars-theme,#pawn-stars-theme *{box-sizing:border-box;cursor:none!important}
-#pawn-stars-theme{width:100%;min-height:100vh;position:relative;overflow:hidden;padding:15px;color:#f7fbff;font-family:Arial,sans-serif;line-height:1.4;background:linear-gradient(145deg,#142c43,#234969,#142c43);border:1px solid #d8b85a;border-radius:14px}
-#pawn-stars-star-cursor{position:fixed;left:0;top:0;z-index:2147483647;pointer-events:none;display:none;font-size:25px;line-height:1;transform:translate(3px,3px);filter:drop-shadow(0 0 5px #d8b85a) drop-shadow(0 0 9px #a9dcff);user-select:none}
-.pawn-stars-trail{position:fixed!important;z-index:2147483647!important;pointer-events:none!important;line-height:1;animation:pawnTrail .85s ease-out forwards}
-@keyframes pawnTrail{to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.25)}}
-#pawn-stars-theme .panel{background:linear-gradient(145deg,#234969,#193650);border:1px solid #d8b85a;border-radius:11px;padding:13px;margin-bottom:13px;box-shadow:0 0 7px #a9dcff22}
-#pawn-stars-theme button{font-family:Arial,sans-serif;transition:.2s ease}
-#pawn-stars-theme button:hover{transform:translateY(-2px);filter:brightness(1.15);box-shadow:0 0 10px #a9dcff88;border-color:#a9dcff!important}
+
+#pawn-stars-theme{
+width:100%;
+min-height:100vh;
+position:relative;
+overflow:hidden;
+padding:15px;
+color:#24415e;
+font-family:Arial,sans-serif;
+line-height:1.4;
+background:linear-gradient(145deg,#d9efff,#f5fbff,#d9efff);
+border:2px solid #d8b85a;
+border-radius:14px;
+box-shadow:0 0 12px #d8b85a44;
+}
+
+#pawn-stars-star-cursor{
+position:fixed;left:0;top:0;z-index:2147483647;
+pointer-events:none;display:none;font-size:25px;
+line-height:1;transform:translate(3px,3px);
+filter:drop-shadow(0 0 5px #d8b85a) drop-shadow(0 0 9px #a9dcff);
+user-select:none
+}
+
+.pawn-stars-trail{
+position:fixed!important;z-index:2147483647!important;
+pointer-events:none!important;line-height:1;
+animation:pawnTrail .85s ease-out forwards
+}
+@keyframes pawnTrail{
+to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.25)}
+}
+
+/* PANELS */
+#pawn-stars-theme .panel{
+background:linear-gradient(145deg,#f7fcff,#dcefff);
+border:1px solid #d8b85a;
+border-radius:11px;padding:13px;margin-bottom:13px;
+box-shadow:0 0 7px #9acfff33
+}
+
+/* BUTTONS */
+#pawn-stars-theme button{
+font-family:Arial,sans-serif;
+transition:.2s ease;
+cursor:pointer!important
+}
+#pawn-stars-theme button:hover{
+transform:translateY(-2px);
+filter:brightness(1.06);
+box-shadow:0 0 12px #d8b85a88;
+border-color:#d8b85a!important
+}
 #pawn-stars-theme button:active{transform:scale(.98)}
-#pawn-stars-theme .rain-btn,#pawn-stars-theme .copy-btn{display:block;width:100%;padding:12px;margin:0 0 13px;border:1px solid #d8b85a;border-radius:9px;background:linear-gradient(135deg,#244b70,#193650);color:#fff;font-weight:bold;letter-spacing:2px;font-size:17px}
-#pawn-stars-theme .header{text-align:center;padding:24px 8px 22px;background:linear-gradient(145deg,#244b70,#173650);border:1px solid #d8b85a;border-radius:11px;margin-bottom:13px;box-shadow:inset 0 0 16px #a9dcff18}
-#pawn-stars-theme .title{font-size:clamp(36px,9vw,52px);font-weight:1000;letter-spacing:6px;line-height:1.15;color:#f5fbff;text-shadow:0 0 8px #a9dcff,0 0 15px #d8b85a66}
-#pawn-stars-theme .title-line{width:95px;height:2px;margin:15px auto 0;background:linear-gradient(90deg,transparent,#a9dcff,#d8b85a,transparent)}
-#pawn-stars-theme .subtitle{font-size:10px;letter-spacing:5px;color:#a9dcff;margin-top:9px}
-#pawn-stars-theme .tagline{font-size:10px;letter-spacing:3px;color:#f5fbff;margin-top:12px}
-#pawn-stars-theme .owner{text-align:center;padding:15px 8px;border:1px solid #d8b85a;border-radius:11px;background:linear-gradient(145deg,#234969,#173650);margin-bottom:13px}
-#pawn-stars-theme .owner-label{font-size:9px;letter-spacing:4px;color:#d8b85a;font-weight:bold}
-#pawn-stars-theme .owner-avatar-ring{width:82px;height:82px;margin:10px auto;border-radius:50%;padding:3px;background:linear-gradient(135deg,#a9dcff,#d8b85a,#f7fbff);box-shadow:0 0 10px #a9dcff55}
-#pawn-stars-theme .owner-avatar{width:100%;height:100%;border-radius:50%;overflow:hidden;background:#122b42;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:bold}
-#pawn-stars-theme #owner-live-avatar{display:none;width:100%;height:100%;object-fit:cover;border-radius:50%}
-#pawn-stars-theme .owner-name{font-size:17px;font-weight:900;letter-spacing:1px;color:#f7fbff;overflow-wrap:anywhere}
+
+#pawn-stars-theme .rain-btn,
+#pawn-stars-theme .copy-btn{
+display:block;width:100%;padding:12px;margin:0 0 13px;
+border:1px solid #d8b85a;border-radius:9px;
+background:linear-gradient(135deg,#ffffff,#dcefff);
+color:#24415e;font-weight:bold;letter-spacing:2px;font-size:17px
+}
+
+/* TITLE */
+#pawn-stars-theme .header{
+text-align:center;padding:24px 8px 22px;
+background:linear-gradient(145deg,#f8fdff,#dcefff);
+border:1px solid #d8b85a;border-radius:11px;margin-bottom:13px;
+box-shadow:inset 0 0 16px #d8b85a18
+}
+#pawn-stars-theme .title{
+font-size:clamp(36px,9vw,52px);
+font-weight:1000;letter-spacing:6px;line-height:1.15;
+color:#d1a83c;
+text-shadow:0 0 5px #d8b85a66,0 0 13px #d8b85a44
+}
+#pawn-stars-theme .title-line{
+width:95px;height:2px;margin:15px auto 0;
+background:linear-gradient(90deg,transparent,#d8b85a,#ffffff,transparent)
+}
+#pawn-stars-theme .subtitle{
+font-size:10px;letter-spacing:5px;color:#5d9bc9;margin-top:9px
+}
+#pawn-stars-theme .tagline{
+font-size:10px;letter-spacing:3px;color:#557c9c;margin-top:12px
+}
+
+/* OWNER */
+#pawn-stars-theme .owner{
+text-align:center;padding:15px 8px;
+border:1px solid #d8b85a;border-radius:11px;
+background:linear-gradient(145deg,#f8fdff,#dcefff);
+margin-bottom:13px
+}
+#pawn-stars-theme .owner-label{
+font-size:9px;letter-spacing:4px;color:#c69d35;font-weight:bold
+}
+#pawn-stars-theme .owner-avatar-ring{
+width:82px;height:82px;margin:10px auto;border-radius:50%;
+padding:3px;background:linear-gradient(135deg,#d8b85a,#ffffff,#d8b85a);
+box-shadow:0 0 7px #d8b85a55;
+transition:.25s ease
+}
+#pawn-stars-theme .owner-avatar-ring:hover{
+transform:scale(1.06);
+box-shadow:0 0 12px #d8b85a,0 0 25px #d8b85a88,0 0 38px #a9dcff;
+}
+#pawn-stars-theme .owner-avatar{
+width:100%;height:100%;border-radius:50%;overflow:hidden;
+background:#eaf6ff;display:flex;align-items:center;
+justify-content:center;color:#24415e;font-size:30px;font-weight:bold;
+transition:.25s ease
+}
+#pawn-stars-theme #owner-live-avatar{
+display:none;width:100%;height:100%;object-fit:cover;border-radius:50%
+}
+#pawn-stars-theme .owner-name{
+font-size:17px;font-weight:900;letter-spacing:1px;
+color:#24415e;overflow-wrap:anywhere;transition:.2s
+}
 #pawn-stars-theme .owner a{text-decoration:none;color:inherit}
-#pawn-stars-theme .owner a:hover{color:#a9dcff}
-#pawn-stars-theme .member-counter{text-align:center;padding:16px 10px;border:1px solid #d8b85a;border-radius:11px;background:linear-gradient(145deg,#234969,#183650);margin:13px 0}
-#pawn-stars-theme .member-heading{font-size:10px;font-weight:bold;letter-spacing:4px;color:#a9dcff;margin-bottom:8px}
-#pawn-stars-theme .member-number{font-size:38px;font-weight:900;color:#f7fbff;line-height:1.15;text-shadow:0 0 9px #a9dcff55}
-#pawn-stars-theme .member-caption{font-size:10px;letter-spacing:3px;color:#d8b85a;margin-top:7px}
-#pawn-stars-theme .member-status{font-size:10px;color:#d4e8f7;margin-top:9px}
-#pawn-stars-theme .member-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#a9dcff;margin-right:5px}
-#pawn-stars-theme .new-members-box{border:1px solid #d8b85a;border-radius:11px;padding:13px;background:linear-gradient(145deg,#234969,#183650);margin:12px 0 15px}
-#pawn-stars-theme .new-members-heading{text-align:center;font-size:12px;font-weight:900;letter-spacing:3px;color:#a9dcff;padding:3px 0 11px;margin-bottom:11px;border-bottom:1px solid #a9dcff55}
-#pawn-stars-theme .new-member-card{display:flex;align-items:center;gap:11px;padding:9px;margin-bottom:8px;background:#173650;border:1px solid #a9dcff55;border-radius:8px;transition:.2s}
+#pawn-stars-theme .owner a:hover .owner-name{
+color:#c69d35;text-shadow:0 0 8px #d8b85a99
+}
+
+/* MEMBER COUNT */
+#pawn-stars-theme .member-counter{
+text-align:center;padding:16px 10px;
+border:1px solid #d8b85a;border-radius:11px;
+background:linear-gradient(145deg,#f8fdff,#dcefff);margin:13px 0
+}
+#pawn-stars-theme .member-heading{
+font-size:10px;font-weight:bold;letter-spacing:4px;color:#5d9bc9;margin-bottom:8px
+}
+#pawn-stars-theme .member-number{
+font-size:38px;font-weight:900;color:#24415e;
+line-height:1.15;text-shadow:0 0 9px #a9dcff55
+}
+#pawn-stars-theme .member-caption{
+font-size:10px;letter-spacing:3px;color:#c69d35;margin-top:7px
+}
+#pawn-stars-theme .member-status{font-size:10px;color:#6888a3;margin-top:9px}
+#pawn-stars-theme .member-dot{
+display:inline-block;width:7px;height:7px;border-radius:50%;
+background:#a9dcff;margin-right:5px
+}
+
+/* NEWEST MEMBERS */
+#pawn-stars-theme .new-members-box{
+border:1px solid #d8b85a;border-radius:11px;padding:13px;
+background:linear-gradient(145deg,#f8fdff,#dcefff);margin:12px 0 15px
+}
+#pawn-stars-theme .new-members-heading{
+text-align:center;font-size:12px;font-weight:900;letter-spacing:3px;
+color:#5d9bc9;padding:3px 0 11px;margin-bottom:11px;
+border-bottom:1px solid #d8b85a88
+}
+#pawn-stars-theme .new-member-card{
+display:flex;align-items:center;gap:11px;padding:9px;margin-bottom:8px;
+background:#f6fbff;border:1px solid #b6dcfa;border-radius:8px;transition:.2s
+}
 #pawn-stars-theme .new-member-card:last-child{margin-bottom:0}
-#pawn-stars-theme .new-member-card:hover{transform:translateX(2px);border-color:#d8b85a;background:#1e4565}
-#pawn-stars-theme .new-member-avatar{width:43px;height:43px;min-width:43px;border-radius:8px;background:#1c3c59;border:1px solid #a9dcff;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:white}
-#pawn-stars-theme .new-member-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+#pawn-stars-theme .new-member-card:hover{
+transform:translateX(2px);border-color:#d8b85a;background:#fff
+}
+#pawn-stars-theme .new-member-avatar{
+width:43px;height:43px;min-width:43px;border-radius:8px;
+background:#e4f3ff;border:1px solid #d8b85a;overflow:hidden;
+display:flex;align-items:center;justify-content:center;
+font-size:18px;font-weight:900;color:#24415e
+}
+#pawn-stars-theme .new-member-avatar img{
+width:100%;height:100%;object-fit:cover;display:block
+}
 #pawn-stars-theme .new-member-info{min-width:0;flex:1}
-#pawn-stars-theme .new-member-name{font-size:12px;font-weight:900;color:#f7fbff;overflow-wrap:anywhere}
-#pawn-stars-theme .new-member-name a{color:inherit;text-decoration:none}
-#pawn-stars-theme .new-member-date{font-size:9px;color:#a9dcff;margin-top:3px;letter-spacing:1px}
-#pawn-stars-theme .new-member-rank{font-size:9px;color:#d8b85a;letter-spacing:1px;white-space:nowrap}
-#pawn-stars-theme .new-members-status{text-align:center;font-size:10px;color:#bcd7eb;padding:9px 3px 3px}
+#pawn-stars-theme .new-member-name{
+font-size:12px;font-weight:900;color:#24415e;overflow-wrap:anywhere;
+transition:.2s
+}
+#pawn-stars-theme .new-member-name a{
+color:inherit;text-decoration:none;transition:.2s
+}
+#pawn-stars-theme .new-member-name a:hover{
+color:#c69d35;text-shadow:0 0 7px #d8b85a88
+}
+#pawn-stars-theme .new-member-date{
+font-size:9px;color:#6699bb;margin-top:3px;letter-spacing:1px
+}
+#pawn-stars-theme .new-member-rank{
+font-size:9px;color:#c69d35;letter-spacing:1px;white-space:nowrap
+}
+#pawn-stars-theme .new-members-status{
+text-align:center;font-size:10px;color:#6888a3;padding:9px 3px 3px
+}
 #pawn-stars-theme .new-members-status:empty{display:none}
-#pawn-stars-theme .footer{text-align:center;padding:10px;color:#f7fbff;font-size:12px;font-style:italic}
-#pawn-stars-theme .footer-rule{height:1px;background:linear-gradient(90deg,transparent,#d8b85a,#a9dcff,transparent);margin:6px 0 12px}
-#pawn-stars-theme .footer-mark{text-align:center;color:#a9dcff;font-size:9px;letter-spacing:4px}
-#pawn-stars-theme .pawn-stars-rain{position:absolute;top:-35px;z-index:9999;pointer-events:none;animation:pawnFall linear forwards;line-height:1}
-@keyframes pawnFall{0%{transform:translateY(-25px) rotate(0);opacity:0}10%,90%{opacity:1}100%{transform:translateY(750px) rotate(360deg);opacity:0}}
+
+/* FOOTER */
+#pawn-stars-theme .footer{
+text-align:center;padding:10px;color:#557c9c;font-size:12px;font-style:italic
+}
+#pawn-stars-theme .footer-rule{
+height:1px;background:linear-gradient(90deg,transparent,#d8b85a,#a9dcff,transparent);
+margin:6px 0 12px
+}
+#pawn-stars-theme .footer-mark{
+text-align:center;color:#c69d35;font-size:9px;letter-spacing:4px
+}
+
+/* STAR RAIN */
+#pawn-stars-theme .pawn-stars-rain{
+position:absolute;top:-35px;z-index:9999;pointer-events:none;
+animation:pawnFall linear forwards;line-height:1
+}
+@keyframes pawnFall{
+0%{transform:translateY(-25px) rotate(0);opacity:0}
+10%,90%{opacity:1}
+100%{transform:translateY(750px) rotate(360deg);opacity:0}
+}
 </style>
+
 <div id="pawn-stars-theme">
+
 <button class="rain-btn" onclick="var box=document.getElementById('pawn-stars-theme');var rain=['⭐️','✨','💫'];for(var i=0;i<32;i++){(function(){var f=document.createElement('span');f.className='pawn-stars-rain';f.textContent=rain[Math.floor(Math.random()*rain.length)];f.style.left=(Math.random()*92)+'%';f.style.fontSize=(18+Math.random()*20)+'px';f.style.animationDuration=(2.5+Math.random()*2.5)+'s';f.style.animationDelay=(Math.random()*1.8)+'s';box.appendChild(f);setTimeout(function(){f.remove()},7500)})();}">⭐️</button>
-<div class="header"><div class="title">PAWN STARS</div><div class="title-line"></div><div class="subtitle">PAWN STARS</div><div class="tagline">EVERY PAWN HAS A PURPOSE</div></div>
-<div class="owner"><div class="owner-label">✦ OWNER ✦</div><a href="https://www.chess.com/member/thegiverofcheers" target="_blank" rel="noopener noreferrer"><div class="owner-avatar-ring"><div class="owner-avatar"><span id="owner-avatar-fallback">T</span><img id="owner-live-avatar" alt="TheGiverOfCheers profile picture"></div></div><div class="owner-name">@TheGiverOfCheers</div></a></div>
-<div class="member-counter"><div class="member-heading">✦ CLUB MEMBERS ✦</div><div class="member-number" id="pawn-stars-member-count">...</div><div class="member-caption">COUNTING</div><div class="member-status"><span class="member-dot" id="pawn-stars-member-dot"></span><span id="pawn-stars-member-status">Connecting to Chess.com...</span></div></div>
-<div class="new-members-box"><div class="new-members-heading">✦ NEWEST MEMBERS ✦</div><div id="pawn-stars-new-members"><div class="new-members-status">Loading newest members...</div></div><div class="new-members-status" id="pawn-stars-new-members-status">Connecting to Chess.com...</div></div>
-<div class="footer">EVERY PAWN HAS A PURPOSE</div><div class="footer-rule"></div><div class="footer-mark">P A W N &bull; S T A R S</div>
+
+<div class="header">
+<div class="title">PAWN STARS</div>
+<div class="title-line"></div>
+<div class="subtitle">PAWN STARS</div>
+<div class="tagline">EVERY PAWN HAS A PURPOSE</div>
+</div>
+
+<div class="owner">
+<div class="owner-label">✦ OWNER ✦</div>
+<a href="https://www.chess.com/member/thegiverofcheers" target="_blank" rel="noopener noreferrer">
+<div class="owner-avatar-ring">
+<div class="owner-avatar">
+<span id="owner-avatar-fallback">T</span>
+<img id="owner-live-avatar" alt="TheGiverOfCheers profile picture">
+</div>
+</div>
+<div class="owner-name">@TheGiverOfCheers</div>
+</a>
+</div>
+
+<div class="member-counter">
+<div class="member-heading">✦ CLUB MEMBERS ✦</div>
+<div class="member-number" id="pawn-stars-member-count">...</div>
+<div class="member-caption">COUNTING</div>
+<div class="member-status">
+<span class="member-dot" id="pawn-stars-member-dot"></span>
+<span id="pawn-stars-member-status">Connecting to Chess.com...</span>
+</div>
+</div>
+
+<div class="new-members-box">
+<div class="new-members-heading">✦ NEWEST MEMBERS ✦</div>
+<div id="pawn-stars-new-members">
+<div class="new-members-status">Loading newest members...</div>
+</div>
+<div class="new-members-status" id="pawn-stars-new-members-status">Connecting to Chess.com...</div>
+</div>
+
+<div class="footer">EVERY PAWN HAS A PURPOSE</div>
+<div class="footer-rule"></div>
+<div class="footer-mark">P A W N &bull; S T A R S</div>
+
 <button class="copy-btn" onclick="var link='https://www.chess.com/club/pawn-stares';var t=document.createElement('textarea');t.value=link;t.style.position='fixed';t.style.left='-9999px';document.body.appendChild(t);t.select();try{var ok=document.execCommand('copy');this.innerText=ok?'✓ LINK COPIED!':'COPY FAILED'}catch(e){this.innerText='COPY FAILED'}document.body.removeChild(t)">COPY CLUB LINK</button>
+
 <script>
 (function(){
 var theme=document.getElementById('pawn-stars-theme');
-var star=document.createElement('span');star.id='pawn-stars-star-cursor';star.textContent='⭐️';document.body.appendChild(star);
-document.addEventListener('mousemove',function(e){if(theme&&theme.contains(e.target)){star.style.display='block';star.style.left=e.clientX+'px';star.style.top=e.clientY+'px'}else{star.style.display='none'}});
-var last=0;document.addEventListener('mousemove',function(e){if(!theme||!theme.contains(e.target))return;var now=Date.now();if(now-last<35)return;last=now;var t=document.createElement('span');t.className='pawn-stars-trail';t.textContent=['⭐️','✨','💫'][Math.floor(Math.random()*3)];t.style.left=e.clientX+'px';t.style.top=e.clientY+'px';t.style.fontSize=(8+Math.random()*10)+'px';t.style.setProperty('--dx',(-15+Math.random()*30)+'px');t.style.setProperty('--dy',(15+Math.random()*25)+'px');document.body.appendChild(t);setTimeout(function(){t.remove()},900)});
-function loadAvatar(username,imgId,fallId,letter){var img=document.getElementById(imgId),fallback=document.getElementById(fallId);fetch('https://api.chess.com/pub/player/'+encodeURIComponent(username)).then(function(r){if(!r.ok)throw Error('Profile unavailable');return r.json()}).then(function(p){if(p.avatar){img.onload=function(){img.style.display='block';fallback.style.display='none'};img.onerror=function(){img.style.display='none';fallback.style.display='block'};img.src=p.avatar}}).catch(function(){if(fallback)fallback.textContent=letter})}
+var star=document.createElement('span');
+star.id='pawn-stars-star-cursor';
+star.textContent='⭐️';
+document.body.appendChild(star);
+
+document.addEventListener('mousemove',function(e){
+if(theme&&theme.contains(e.target)){
+star.style.display='block';
+star.style.left=e.clientX+'px';
+star.style.top=e.clientY+'px'
+}else{star.style.display='none'}
+});
+
+var last=0;
+document.addEventListener('mousemove',function(e){
+if(!theme||!theme.contains(e.target))return;
+var now=Date.now();if(now-last<35)return;last=now;
+var t=document.createElement('span');
+t.className='pawn-stars-trail';
+t.textContent=['⭐️','✨','💫'][Math.floor(Math.random()*3)];
+t.style.left=e.clientX+'px';t.style.top=e.clientY+'px';
+t.style.fontSize=(8+Math.random()*10)+'px';
+t.style.setProperty('--dx',(-15+Math.random()*30)+'px');
+t.style.setProperty('--dy',(15+Math.random()*25)+'px';
+document.body.appendChild(t);
+setTimeout(function(){t.remove()},900)
+});
+
+function loadAvatar(username,imgId,fallId,letter){
+var img=document.getElementById(imgId),fallback=document.getElementById(fallId);
+fetch('https://api.chess.com/pub/player/'+encodeURIComponent(username))
+.then(function(r){if(!r.ok)throw Error('Profile unavailable');return r.json()})
+.then(function(p){
+if(p.avatar){
+img.onload=function(){img.style.display='block';fallback.style.display='none'};
+img.onerror=function(){img.style.display='none';fallback.style.display='block'};
+img.src=p.avatar
+}
+})
+.catch(function(){if(fallback)fallback.textContent=letter})
+}
 loadAvatar('thegiverofcheers','owner-live-avatar','owner-avatar-fallback','T');
-function loadMemberCount(){var count=document.getElementById('pawn-stars-member-count'),status=document.getElementById('pawn-stars-member-status'),dot=document.getElementById('pawn-stars-member-dot');fetch('https://api.chess.com/pub/club/pawn-stares').then(function(r){if(!r.ok)throw Error('Club data unavailable');return r.json()}).then(function(c){if(typeof c.members_count!=='number')throw Error('No count');count.textContent=c.members_count.toLocaleString();status.textContent='Club count loaded';dot.style.background='#a9dcff';dot.style.boxShadow='0 0 8px #a9dcff'}).catch(function(){count.textContent='--';status.textContent='Member count unavailable';dot.style.background='#d8b85a';dot.style.boxShadow='0 0 8px #d8b85a'})}
-function timeAgo(ts){var s=Math.max(0,Math.floor(Date.now()/1000-ts));if(s<60)return'JUST NOW';var m=Math.floor(s/60);if(m<60)return m+' MINUTE'+(m===1?'':'S')+' AGO';var h=Math.floor(m/60);if(h<24)return h+' HOUR'+(h===1?'':'S')+' AGO';var d=Math.floor(h/24);if(d<7)return d+' DAY'+(d===1?'':'S')+' AGO';var w=Math.floor(d/7);if(d<30)return w+' WEEK'+(w===1?'':'S')+' AGO';var mo=Math.floor(d/30);if(d<365)return mo+' MONTH'+(mo===1?'':'S')+' AGO';var y=Math.floor(d/365);return y+' YEAR'+(y===1?'':'S')+' AGO'}
-function loadNewestMembers(){var box=document.getElementById('pawn-stars-new-members'),status=document.getElementById('pawn-stars-new-members-status');fetch('https://api.chess.com/pub/club/pawn-stares/members').then(function(r){if(!r.ok)throw Error('Member list unavailable');return r.json()}).then(function(data){var members=[];['weekly','monthly','all_time'].forEach(function(g){if(Array.isArray(data[g]))data[g].forEach(function(m){if(m.username&&typeof m.joined==='number')members.push(m)})});members.sort(function(a,b){return b.joined-a.joined});var seen={};members=members.filter(function(m){var k=m.username.toLowerCase();if(seen[k])return false;seen[k]=true;return true});var newest=members.slice(0,3);box.innerHTML='';if(!newest.length){box.innerHTML='<div class="new-members-status">No member data available.</div>';status.textContent='';return}newest.forEach(function(m,i){var card=document.createElement('div');card.className='new-member-card';var av=document.createElement('div');av.className='new-member-avatar';av.textContent=m.username.charAt(0).toUpperCase();var info=document.createElement('div');info.className='new-member-info';var name=document.createElement('div');name.className='new-member-name';var a=document.createElement('a');a.href='https://www.chess.com/member/'+encodeURIComponent(m.username);a.target='_blank';a.rel='noopener noreferrer';a.textContent='@'+m.username;name.appendChild(a);var date=document.createElement('div');date.className='new-member-date';date.textContent='JOINED '+timeAgo(m.joined);info.appendChild(name);info.appendChild(date);var rank=document.createElement('div');rank.className='new-member-rank';rank.textContent='#'+(i+1);card.appendChild(av);card.appendChild(info);card.appendChild(rank);box.appendChild(card);fetch('https://api.chess.com/pub/player/'+encodeURIComponent(m.username)).then(function(r){if(!r.ok)throw Error('Avatar missing');return r.json()}).then(function(p){if(p.avatar){var image=document.createElement('img');image.alt=m.username;image.src=p.avatar;image.onerror=function(){av.textContent=m.username.charAt(0).toUpperCase()};av.textContent='';av.appendChild(image)}}).catch(function(){})});status.textContent='THE 3 MOST RECENTLY JOINED MEMBERS'}).catch(function(){box.innerHTML='<div class="new-members-status">Could not load members right now.</div>';status.textContent='Chess.com API unavailable'})}
-loadMemberCount();loadNewestMembers();setInterval(loadMemberCount,300000);setInterval(loadNewestMembers,300000);
+
+function loadMemberCount(){
+var count=document.getElementById('pawn-stars-member-count'),
+status=document.getElementById('pawn-stars-member-status'),
+dot=document.getElementById('pawn-stars-member-dot');
+fetch('https://api.chess.com/pub/club/pawn-stares')
+.then(function(r){if(!r.ok)throw Error('Club data unavailable');return r.json()})
+.then(function(c){
+if(typeof c.members_count!=='number')throw Error('No count');
+count.textContent=c.members_count.toLocaleString();
+status.textContent='Club count loaded';
+dot.style.background='#a9dcff';dot.style.boxShadow='0 0 8px #a9dcff'
+})
+.catch(function(){
+count.textContent='--';status.textContent='Member count unavailable';
+dot.style.background='#d8b85a';dot.style.boxShadow='0 0 8px #d8b85a'
+})
+}
+
+function timeAgo(ts){
+var s=Math.max(0,Math.floor(Date.now()/1000-ts));
+if(s<60)return'JUST NOW';
+var m=Math.floor(s/60);
+if(m<60)return m+' MINUTE'+(m===1?'':'S')+' AGO';
+var h=Math.floor(m/60);
+if(h<24)return h+' HOUR'+(h===1?'':'S')+' AGO';
+var d=Math.floor(h/24);
+if(d<7)return d+' DAY'+(d===1?'':'S')+' AGO';
+var w=Math.floor(d/7);
+if(d<30)return w+' WEEK'+(w===1?'':'S')+' AGO';
+var mo=Math.floor(d/30);
+if(d<365)return mo+' MONTH'+(mo===1?'':'S')+' AGO';
+var y=Math.floor(d/365);
+return y+' YEAR'+(y===1?'':'S')+' AGO'
+}
+
+function loadNewestMembers(){
+var box=document.getElementById('pawn-stars-new-members'),
+status=document.getElementById('pawn-stars-new-members-status');
+fetch('https://api.chess.com/pub/club/pawn-stares/members')
+.then(function(r){if(!r.ok)throw Error('Member list unavailable');return r.json()})
+.then(function(data){
+var members=[];
+['weekly','monthly','all_time'].forEach(function(g){
+if(Array.isArray(data[g]))data[g].forEach(function(m){
+if(m.username&&typeof m.joined==='number')members.push(m)
+})
+});
+members.sort(function(a,b){return b.joined-a.joined});
+var seen={};
+members=members.filter(function(m){
+var k=m.username.toLowerCase();
+if(seen[k])return false;seen[k]=true;return true
+});
+var newest=members.slice(0,3);
+box.innerHTML='';
+if(!newest.length){
+box.innerHTML='<div class="new-members-status">No member data available.</div>';
+status.textContent='';return
+}
+newest.forEach(function(m,i){
+var card=document.createElement('div');
+card.className='new-member-card';
+var av=document.createElement('div');
+av.className='new-member-avatar';
+av.textContent=m.username.charAt(0).toUpperCase();
+
+var info=document.createElement('div');
+info.className='new-member-info';
+var name=document.createElement('div');
+name.className='new-member-name';
+
+var a=document.createElement('a');
+a.href='https://www.chess.com/member/'+encodeURIComponent(m.username);
+a.target='_blank';a.rel='noopener noreferrer';
+a.textContent='@'+m.username;
+name.appendChild(a);
+
+var date=document.createElement('div');
+date.className='new-member-date';
+date.textContent='JOINED '+timeAgo(m.joined);
+info.appendChild(name);info.appendChild(date);
+
+var rank=document.createElement('div');
+rank.className='new-member-rank';
+rank.textContent='#'+(i+1);
+
+card.appendChild(av);card.appendChild(info);card.appendChild(rank);
+box.appendChild(card);
+
+fetch('https://api.chess.com/pub/player/'+encodeURIComponent(m.username))
+.then(function(r){if(!r.ok)throw Error('Avatar missing');return r.json()})
+.then(function(p){
+if(p.avatar){
+var image=document.createElement('img');
+image.alt=m.username;image.src=p.avatar;
+image.onerror=function(){av.textContent=m.username.charAt(0).toUpperCase()};
+av.textContent='';av.appendChild(image)
+}
+}).catch(function(){})
+});
+status.textContent='THE 3 MOST RECENTLY JOINED MEMBERS'
+})
+.catch(function(){
+box.innerHTML='<div class="new-members-status">Could not load members right now.</div>';
+status.textContent='Chess.com API unavailable'
+})
+}
+loadMemberCount();
+loadNewestMembers();
+setInterval(loadMemberCount,300000);
+setInterval(loadNewestMembers,300000);
 })();
 </script>
 </div>
-Context window full
-Start a new chat with an automatic summary of this conversation, or upgrade to continue here with more context available in every chat.
-
-
-
 
