@@ -1,23 +1,71 @@
 
-<div id="itu-theme" style="position:relative;background:#eaf6ff;color:#153653;padding:16px;border:1px solid #d6b45a;border-radius:14px;font-family:Arial,sans-serif;">
-
 <style>
-#itu-theme a[data-hover-button],
-#itu-theme button[data-hover-button] {
-  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease, background .22s ease, border-color .22s ease;
+html, body {
+  margin:0!important;
+  padding:0!important;
+  background:#08131f!important;
+  overflow-x:hidden;
 }
-#itu-theme a[data-hover-button]:hover,
-#itu-theme button[data-hover-button]:hover {
-  transform: translateY(-2px) scale(1.025);
-  filter: brightness(1.12);
-  box-shadow: 0 0 16px var(--hover-glow, #8bdcff), 0 0 28px var(--hover-glow, #8bdcff);
-  border-color: var(--hover-border, #d6b45a) !important;
+
+/* STAR MOUSE CURSOR */
+#pawn-stars-theme, #pawn-stars-theme *, #pawn-stars-theme *::before, #pawn-stars-theme *::after {
+  cursor:none!important;
 }
-#itu-theme a[data-hover-button]:active,
-#itu-theme button[data-hover-button]:active {
-  transform: scale(.99);
+#pawn-stars-star-cursor {
+  position:fixed!important;
+  left:0;
+  top:0;
+  z-index:2147483647!important;
+  pointer-events:none!important;
+  display:none;
+  font-size:25px;
+  line-height:1;
+  transform:translate(3px,3px);
+  filter:drop-shadow(0 0 6px #d4af37) drop-shadow(0 0 12px #9ddcff);
+  user-select:none!important;
 }
-#itu-theme .itu-cat-rain {
+
+#pawn-stars-theme {
+  box-sizing:border-box;
+  width:100%;
+  min-height:100vh;
+  line-height:1.4;
+}
+
+/* STAR TRAIL */
+.snow-trail {
+  position:fixed!important;
+  z-index:2147483647!important;
+  pointer-events:none!important;
+  font-size:13px;
+  line-height:1;
+  animation:snowTrailFade .85s ease-out forwards;
+}
+@keyframes snowTrailFade {
+  0% {opacity:1;transform:translate(0,0) scale(1)}
+  100% {opacity:0;transform:translate(var(--snow-x),var(--snow-y)) scale(.2)}
+}
+
+/* HOVER EFFECTS */
+#pawn-stars-theme a[data-hover-button],
+#pawn-stars-theme button[data-hover-button] {
+  transition:all .22s ease;
+}
+#pawn-stars-theme a[data-hover-button]:hover,
+#pawn-stars-theme button[data-hover-button]:hover {
+  transform:translateY(-2px) scale(1.02);
+  filter:brightness(1.25);
+  box-shadow:0 0 16px var(--hover-glow,#ffffff),
+             0 0 28px var(--hover-glow,#ffffff);
+  border-color:var(--hover-border,#ffffff)!important;
+}
+#pawn-stars-theme a[data-hover-button]:active,
+#pawn-stars-theme button[data-hover-button]:active {
+  transform:scale(.99);
+}
+
+/* WINTER CONFETTI */
+#pawn-stars-theme .pawn-stars-rain {
   position:absolute;
   top:-40px;
   z-index:9999;
@@ -26,61 +74,684 @@
   line-height:1;
 }
 @keyframes ituCatFall {
-  0% { transform:translateY(-30px) rotate(0deg); opacity:0; }
-  10% { opacity:1; }
-  90% { opacity:1; }
-  100% { transform:translateY(750px) rotate(360deg); opacity:0; }
+  0% {transform:translateY(-30px) rotate(0);opacity:0}
+  10% {opacity:1}
+  90% {opacity:1}
+  100% {transform:translateY(750px) rotate(360deg);opacity:0}
+}
+
+/* OWNER CARD */
+#pawn-stars-theme .hawk-profile {
+  text-align:center;
+  padding:14px 8px;
+  margin-bottom:12px;
+  border:1px solid #b9c8d5;
+  border-radius:11px;
+  background:#173c5b;
+  position:relative;
+  overflow:hidden;
+  transition:all .25s ease;
+}
+#pawn-stars-theme .hawk-avatar-wrap {
+  width:78px;
+  height:78px;
+  margin:10px auto;
+  border-radius:50%;
+  padding:3px;
+  background:#6d8295;
+  box-shadow:0 0 9px #ffffff;
+  transition:all .25s ease;
+}
+#pawn-stars-theme .hawk-avatar-wrap:hover {
+  transform:scale(1.09);
+  filter:brightness(1.2);
+  box-shadow:0 0 16px var(--avatar-glow,#ffffff),
+             0 0 28px var(--avatar-glow,#ffffff),
+             0 0 45px var(--avatar-glow,#ffffff);
+}
+#pawn-stars-theme .hawk-avatar-inner {
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:#142a40;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  font-size:34px;
+  font-weight:900;
+  color:#ffffff;
+}
+#pawn-stars-theme #hawk-live-avatar {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:none;
+}
+#pawn-stars-theme .hawk-name {
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:2px;
+  color:#ffffff;
+  overflow-wrap:anywhere;
+}
+#pawn-stars-theme .hawk-owner-label {
+  font-size:9px;
+  letter-spacing:4px;
+  color:#c5d7e6;
+  margin-bottom:5px;
+}
+
+/* PROFILE CARDS */
+#pawn-stars-theme .watch-profile {
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:11px;
+  margin-bottom:10px;
+  border:1px solid #b9c8d5;
+  border-left:4px solid #b9c8d5;
+  border-radius:9px;
+  background:#173c5b;
+  min-height:82px;
+  box-sizing:border-box;
+  transition:all .25s ease;
+}
+#pawn-stars-theme .watch-avatar-wrap {
+  width:64px;
+  height:64px;
+  min-width:64px;
+  border-radius:9px;
+  padding:2px;
+  background:#6d8295;
+  box-shadow:0 0 8px #ffffff;
+  box-sizing:border-box;
+  transition:all .25s ease;
+}
+#pawn-stars-theme .watch-avatar-wrap:hover {
+  transform:scale(1.08);
+  filter:brightness(1.2);
+  box-shadow:0 0 14px var(--avatar-glow,#ffffff),
+             0 0 26px var(--avatar-glow,#ffffff),
+             0 0 38px var(--avatar-glow,#ffffff);
+}
+#pawn-stars-theme .watch-avatar-inner {
+  width:100%;
+  height:100%;
+  border-radius:7px;
+  background:#142a40;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  font-size:30px;
+  font-weight:900;
+  color:#ffffff;
+}
+#pawn-stars-theme .watch-avatar-inner img {
+  display:none;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+#pawn-stars-theme .watch-info {
+  min-width:0;
+  text-align:left;
+}
+#pawn-stars-theme .watch-name {
+  font-size:13px;
+  font-weight:900;
+  color:#ffffff;
+  overflow-wrap:anywhere;
+  line-height:1.3;
+}
+
+/* CLICKABLE NAMES */
+#pawn-stars-theme .profile-name-link {
+  display:inline-block;
+  color:inherit;
+  text-decoration:none;
+}
+#pawn-stars-theme .profile-name-link:hover {
+  filter:brightness(1.35);
+}
+
+/* MEMBER COUNTER */
+#pawn-stars-theme .member-counter {
+  background:linear-gradient(135deg,#173c5b,#d4af37,#eaf6ff);
+  border:1px solid #eaf6ff;
+  border-radius:11px;
+  padding:17px 12px;
+  margin:12px 0;
+  text-align:center;
+  transition:all .25s ease;
+}
+#pawn-stars-theme .member-heading {
+  font-size:10px;
+  font-weight:bold;
+  letter-spacing:4px;
+  color:#c5d7e6;
+  margin-bottom:9px;
+}
+#pawn-stars-theme .member-number {
+  font-size:38px;
+  font-weight:900;
+  line-height:1.15;
+  color:#ffffff;
+  text-shadow:0 0 12px #ffffff;
+  transition:all .25s ease;
+}
+#pawn-stars-theme .member-caption {
+  font-size:10px;
+  letter-spacing:3px;
+  color:#c5d7e6;
+  margin-top:7px;
+}
+#pawn-stars-theme .member-status {
+  font-size:10px;
+  color:#b9c8d5;
+  margin-top:9px;
+}
+#pawn-stars-theme .member-dot {
+  display:inline-block;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#b9c8d5;
+  margin-right:5px;
+}
+
+/* NEWEST MEMBERS */
+#pawn-stars-theme .new-members-box {
+  background:linear-gradient(135deg,#173c5b,#d4af37,#eaf6ff);
+  border:1px solid #eaf6ff;
+  border-radius:11px;
+  padding:13px;
+  margin:12px 0 15px;
+  transition:all .25s ease;
+}
+#pawn-stars-theme .new-members-heading {
+  text-align:center;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:3px;
+  color:#ffffff;
+  padding:3px 0 11px;
+  margin-bottom:11px;
+  border-bottom:1px solid #526577;
+}
+#pawn-stars-theme .new-member-card {
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:9px;
+  margin-bottom:8px;
+  background:#17314b;
+  border:1px solid #526577;
+  border-radius:8px;
+  transition:all .2s ease;
+}
+#pawn-stars-theme .new-member-card:last-child {
+  margin-bottom:0;
+}
+#pawn-stars-theme .new-member-card:hover {
+  transform:translateX(3px);
+  border-color:#c5d7e6;
+  background:#1c3a55;
+}
+#pawn-stars-theme .new-member-avatar {
+  width:43px;
+  height:43px;
+  min-width:43px;
+  border-radius:8px;
+  background:#203d58;
+  border:1px solid #8ca5bb;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:19px;
+  font-weight:900;
+  color:#ffffff;
+}
+#pawn-stars-theme .new-member-avatar img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+#pawn-stars-theme .new-member-info {
+  min-width:0;
+  flex:1;
+}
+#pawn-stars-theme .new-member-name {
+  font-size:12px;
+  font-weight:900;
+  color:#ffffff;
+  overflow-wrap:anywhere;
+}
+#pawn-stars-theme .new-member-date {
+  font-size:9px;
+  color:#a9bed1;
+  margin-top:3px;
+  letter-spacing:1px;
+}
+#pawn-stars-theme .new-member-rank {
+  font-size:9px;
+  color:#d4af37;
+  letter-spacing:1px;
+  white-space:nowrap;
+}
+#pawn-stars-theme .new-members-status {
+  text-align:center;
+  font-size:10px;
+  color:#a9bed1;
+  padding:10px 3px 3px;
+}
+#pawn-stars-theme .new-members-status:empty {
+  display:none;
+}
+
+/* GENERAL POLISH */
+#pawn-stars-theme .section-panel {
+  background:linear-gradient(135deg,#173c5b,#d4af37,#eaf6ff);
+  border:1px solid #eaf6ff;
+  border-radius:11px;
+  padding:14px;
+  margin-bottom:13px;
+}
+#pawn-stars-theme button {
+  font-family:Arial,sans-serif;
 }
 </style>
 
+<div id="pawn-stars-theme"
+style="position:relative;background:linear-gradient(145deg,#102a43,#1d4668,#d4af37,#eaf6ff);color:#ffffff;padding:15px;border:1px solid #eaf6ff;border-radius:14px;font-family:Arial,sans-serif;">
+
 <!-- STAR RAIN BUTTON -->
-<button data-hover-button data-hover-color="#79cfff" data-hover-border="#d6b45a"
+<button data-hover-button data-hover-color="#9ddcff" data-hover-border="#eaf6ff"
 onclick="
-var box=document.getElementById('itu-theme');
-var cats=['💫','💎','⭐️','✨'];
+var box=document.getElementById('pawn-stars-theme');
+var snow=['⭐️','✨','💫'];
 for(var i=0;i<32;i++){
   (function(){
-    var cat=document.createElement('span');
-    cat.className='itu-cat-rain';
-    cat.textContent=cats[Math.floor(Math.random()*cats.length)];
-    cat.style.left=(Math.random()*92)+'%';
-    cat.style.fontSize=(18+Math.random()*20)+'px';
-    cat.style.animationDuration=(2.5+Math.random()*2.5)+'s';
-    cat.style.animationDelay=(Math.random()*1.8)+'s';
-    box.appendChild(cat);
-    setTimeout(function(){cat.remove();},7500);
+    var flake=document.createElement('span');
+    flake.className='pawn-stars-rain';
+    flake.textContent=snow[Math.floor(Math.random()*snow.length)];
+    flake.style.left=(Math.random()*92)+'%';
+    flake.style.fontSize=(18+Math.random()*20)+'px';
+    flake.style.animationDuration=(2.5+Math.random()*2.5)+'s';
+    flake.style.animationDelay=(Math.random()*1.8)+'s';
+    box.appendChild(flake);
+    setTimeout(function(){flake.remove()},7500);
   })();
 }
 "
-style="--hover-glow:#8bdcff;--hover-border:#d6b45a;display:block;width:100%;background:#d9f0ff;color:#153653;border:1px solid #d6b45a;border-radius:9px;padding:12px;margin-bottom:14px;font-size:20px;cursor:pointer;">⭐️</button>
+style="--hover-glow:#d4af37;--hover-border:#eaf6ff;display:block;width:100%;background:linear-gradient(135deg,#173c5b,#d4af37,#eaf6ff);color:#ffffff;border:1px solid #eaf6ff;border-radius:9px;padding:11px;margin-bottom:14px;font-size:20px;">
+⭐️
+</button>
 
 <!-- HEADER -->
-<div style="text-align:center;padding:20px 8px;background:linear-gradient(135deg,#bce8ff,#ffffff,#d8efff);border:2px solid #d6b45a;border-radius:12px;margin-bottom:14px;">
-  <div style="font-size:28px;font-weight:900;letter-spacing:4px;color:#248ac5;text-shadow:0 0 12px #8bdcff;">PAWN STARS</div>
-  <div style="font-size:10px;letter-spacing:5px;color:#b18b35;margin-top:8px;">C L U B</div>
-  <div style="font-size:10px;letter-spacing:3px;color:#54748e;margin-top:12px;">PLAY &bull; LEARN &bull; GROW</div>
+<div data-color-bg="linear-gradient(135deg,#174a75,#7a5b20,#174a75)"
+data-bw-bg="linear-gradient(135deg,#102338,#1c3a55,#08131f)"
+style="text-align:center;padding:23px 8px;background:linear-gradient(135deg,#102a43,#d4af37,#eaf6ff);border:1px solid #eaf6ff;border-radius:11px;margin-bottom:14px;">
+
+<div data-color-text="#e6c75a" data-color-shadow="0 0 12px #62bfff,0 0 18px #d4af37"
+style="font-size:28px;font-weight:900;letter-spacing:4px;color:#ffffff;">
+♟ PAWN STARS ♟
 </div>
 
-<!-- NAVIGATION -->
-<div style="background:#ffffff;border:1px solid #d6b45a;border-radius:12px;padding:14px;margin-bottom:14px;">
-  <div style="text-align:center;font-size:13px;font-weight:bold;letter-spacing:3px;margin-bottom:12px;color:#248ac5;">✦ NAVIGATION ✦</div>
+<div data-color-text="#9ddcff"
+style="font-size:10px;letter-spacing:5px;color:#eaf6ff;margin-top:8px;">
+PAWN STARS
+</div>
 
-  <a data-hover-button data-hover-color="#8bdcff" data-hover-border="#d6b45a"
-  href="https://www.chess.com/club/pawn-stares"
-  style="--hover-glow:#8bdcff;--hover-border:#d6b45a;display:block;background:#e5f5ff;color:#153653;text-decoration:none;border:1px solid #a9dfff;border-radius:8px;padding:12px;margin:8px 0;font-weight:bold;">♟ &nbsp; CLUB HOME &rarr;</a>
+<div style="font-size:10px;letter-spacing:3px;color:#c5d7e6;margin-top:12px;">
+EVERY PAWN HAS A PURPOSE
+</div>
+</div>
 
-  <a data-hover-button data-hover-color="#8bdcff" data-hover-border="#d6b45a"
-  href="https://www.chess.com/clubs/members/pawn-stares"
-  style="--hover-glow:#8bdcff;--hover-border:#d6b45a;display:block;background:#e5f5ff;color:#153653;text-decoration:none;border:1px solid #a9dfff;border-radius:8px;padding:12px;margin:8px 0;font-weight:bold;">♙ &nbsp; MEMBERS &rarr;</a>
+<!-- PAWN STARS CLUB INFO -->
+<div class="section-panel" style="text-align:center;color:#d4af37;letter-spacing:2px;font-weight:bold;">
+  ♟ PAWN STARS ♟
+  <div style="font-size:10px;color:#c5d7e6;letter-spacing:3px;margin-top:7px;">EVERY PAWN HAS A PURPOSE</div>
+</div>
 
-  <a data-hover-button data-hover-color="#8bdcff" data-hover-border="#d6b45a"
-  href="https://www.chess.com/clubs/events/pawn-stares"
-  style="--hover-glow:#8bdcff;--hover-border:#d6b45a;display:block;background:#e5f5ff;color:#153653;text-decoration:none;border:1px solid #a9dfff;border-radius:8px;padding:12px;margin:8px 0;font-weight:bold;">⚡ &nbsp; EVENTS &rarr;</a>
+<!-- MEMBER COUNTER -->
+<div class="member-counter" data-color-bg="linear-gradient(145deg,#12334d,#352a17,#12334d)" data-bw-bg="#102338" data-color-border="#d4af37">
+  <div class="member-heading" data-color-text="#9ddcff">✦ CLUB MEMBERS ✦</div>
+  <div class="member-number" id="pawn-stars-member-count">...</div>
+  <div class="member-caption" data-color-text="#e6c75a">COUNTING</div>
+  <div class="member-status">
+    <span class="member-dot" id="pawn-stars-member-dot"></span>
+    <span id="pawn-stars-member-status">Connecting to Chess.com...</span>
+  </div>
+</div>
+
+<!-- NEWEST MEMBERS LIST -->
+<div class="new-members-box" data-color-bg="linear-gradient(145deg,#12334d,#352a17,#12334d)" data-bw-bg="#102338" data-color-border="#d4af37">
+
+  <div class="new-members-heading" data-color-text="#e6c75a">
+    ✦ NEWEST MEMBERS ✦
+  </div>
+
+  <div id="pawn-stars-new-members">
+    <div class="new-members-status">Loading newest members...</div>
+  </div>
+
+  <div class="new-members-status" id="pawn-stars-new-members-status">
+    Connecting to Chess.com...
+  </div>
 </div>
 
 <!-- FOOTER -->
-<div style="text-align:center;padding:10px;color:#54748e;font-size:13px;font-style:italic;">&ldquo;&rdquo; &nbsp;- </div>
-<div style="height:1px;background:#d6b45a;margin:6px 0 12px;"></div>
-<div style="text-align:center;color:#8b713c;font-size:9px;letter-spacing:4px;">P A W N &bull; S T A R S &bull; E S T . 2 0 2 6</div>
+<div data-color-text="#e6c75a" style="text-align:center;padding:10px;color:#e6f3ff;font-size:13px;font-style:italic;">
+EVERY PAWN HAS A PURPOSE
+</div>
+
+<div style="height:1px;background:#b9c8d5;margin:6px 0 12px;"></div>
+
+<div style="text-align:center;color:#c5d7e6;font-size:9px;letter-spacing:4px;">
+P A W N &bull; S T A R S
+</div>
+
+<!-- COPY CLUB LINK -->
+<button data-hover-button data-hover-color="#9ddcff" data-hover-border="#9ddcff"
+onclick="
+var link='https://www.chess.com/club/pawn-stares';
+var temp=document.createElement('textarea');
+temp.value=link;
+temp.style.position='fixed';
+temp.style.left='-9999px';
+document.body.appendChild(temp);
+temp.select();
+try {
+  var success=document.execCommand('copy');
+  this.innerText=success?'✓ LINK COPIED!':'COPY FAILED';
+} catch(e) {
+  this.innerText='COPY FAILED';
+}
+document.body.removeChild(temp);
+"
+style="--hover-glow:#ffffff;--hover-border:#ffffff;display:block;width:100%;background:#142a40;color:#ffffff;border:1px solid #b9c8d5;border-radius:9px;padding:13px;margin-top:14px;font-weight:bold;letter-spacing:2px;">
+COPY CLUB LINK
+</button>
+
+<!-- CHESS.COM API + SNOW TRAIL -->
+<script>
+(function(){
+
+/* STAR CURSOR THAT FOLLOWS THE MOUSE */
+var starCursor=document.createElement('span');
+starCursor.id='pawn-stars-star-cursor';
+starCursor.textContent='⭐️';
+document.body.appendChild(starCursor);
+
+var theme=document.getElementById('pawn-stars-theme');
+
+document.addEventListener('mousemove',function(e){
+  if(theme && theme.contains(e.target)){
+    starCursor.style.display='block';
+    starCursor.style.left=e.clientX+'px';
+    starCursor.style.top=e.clientY+'px';
+  } else {
+    starCursor.style.display='none';
+  }
+});
+
+/* STAR TRAIL */
+var lastSnow=0;
+
+document.addEventListener('mousemove',function(e){
+  var now=Date.now();
+  if(now-lastSnow<35) return;
+  lastSnow=now;
+
+  var snow=document.createElement('span');
+  snow.className='snow-trail';
+  snow.textContent=['⭐️','✨','💫'][Math.floor(Math.random()*3)];
+
+  snow.style.left=e.clientX+'px';
+  snow.style.top=e.clientY+'px';
+  snow.style.fontSize=(8+Math.random()*10)+'px';
+  snow.style.setProperty('--snow-x',(-15+Math.random()*30)+'px');
+  snow.style.setProperty('--snow-y',(15+Math.random()*25)+'px');
+
+  document.body.appendChild(snow);
+  setTimeout(function(){snow.remove()},900);
+});
+
+/* LOAD PROFILE PICTURES */
+function loadAvatar(username,imageId,fallbackId,letter){
+  var avatar=document.getElementById(imageId);
+  var fallback=document.getElementById(fallbackId);
+
+  fetch('https://api.chess.com/pub/player/'+username)
+    .then(function(response){
+      if(!response.ok) throw new Error('Profile unavailable');
+      return response.json();
+    })
+    .then(function(profile){
+      if(profile.avatar){
+        avatar.onload=function(){
+          avatar.style.display='block';
+          fallback.style.display='none';
+        };
+        avatar.onerror=function(){
+          avatar.style.display='none';
+          fallback.style.display='block';
+        };
+        avatar.src=profile.avatar;
+      }
+    })
+    .catch(function(){fallback.textContent=letter;});
+}
+
+loadAvatar('i-am-hawk','hawk-live-avatar','hawk-avatar-fallback','H');
+loadAvatar('watchandlearn101','watch-live-avatar','watch-avatar-fallback','W');
+loadAvatar('lowkbadmove','lowk-live-avatar','lowk-avatar-fallback','L');
+loadAvatar('k1ngslayer01','kingslayer-live-avatar','kingslayer-avatar-fallback','K');
+
+/* LOAD MEMBER COUNT */
+function loadMemberCount(){
+  var count=document.getElementById('pawn-stars-member-count');
+  var status=document.getElementById('pawn-stars-member-status');
+  var dot=document.getElementById('pawn-stars-member-dot');
+
+  fetch('https://api.chess.com/pub/club/pawn-stares')
+    .then(function(response){
+      if(!response.ok) throw new Error('Club data unavailable');
+      return response.json();
+    })
+    .then(function(club){
+      if(typeof club.members_count==='number'){
+        count.textContent=club.members_count.toLocaleString();
+        status.textContent='Club count loaded';
+        dot.style.background='#9ddcff';
+        dot.style.boxShadow='0 0 8px #9ddcff';
+      } else {
+        throw new Error('Member count unavailable');
+      }
+    })
+    .catch(function(){
+      count.textContent='--';
+      status.textContent='Member count unavailable';
+      dot.style.background='#d4af37';
+      dot.style.boxShadow='0 0 8px #d4af37';
+    });
+}
+
+/* TURN JOIN DATE INTO TIME AGO */
+function timeAgo(timestamp){
+  var seconds=Math.max(0,Math.floor(Date.now()/1000-timestamp));
+
+  if(seconds<60){
+    return 'JUST NOW';
+  }
+
+  var minutes=Math.floor(seconds/60);
+  if(minutes<60){
+    return minutes+' MINUTE'+(minutes===1?'':'S')+' AGO';
+  }
+
+  var hours=Math.floor(minutes/60);
+  if(hours<24){
+    return hours+' HOUR'+(hours===1?'':'S')+' AGO';
+  }
+
+  var days=Math.floor(hours/24);
+  if(days<7){
+    return days+' DAY'+(days===1?'':'S')+' AGO';
+  }
+
+  var weeks=Math.floor(days/7);
+  if(days<30){
+    return weeks+' WEEK'+(weeks===1?'':'S')+' AGO';
+  }
+
+  var months=Math.floor(days/30);
+  if(days<365){
+    return months+' MONTH'+(months===1?'':'S')+' AGO';
+  }
+
+  var years=Math.floor(days/365);
+  return years+' YEAR'+(years===1?'':'S')+' AGO';
+}
+
+/* NEWEST MEMBERS */
+function loadNewestMembers(){
+
+  var container=document.getElementById('pawn-stars-new-members');
+  var status=document.getElementById('pawn-stars-new-members-status');
+
+  fetch('https://api.chess.com/pub/club/pawn-stares/members')
+    .then(function(response){
+      if(!response.ok) throw new Error('Member list unavailable');
+      return response.json();
+    })
+    .then(function(data){
+
+      var members=[];
+
+      ['weekly','monthly','all_time'].forEach(function(group){
+        if(Array.isArray(data[group])){
+          data[group].forEach(function(member){
+            if(member.username && typeof member.joined==='number'){
+              members.push(member);
+            }
+          });
+        }
+      });
+
+      /* SORT BY JOIN DATE */
+      members.sort(function(a,b){
+        return b.joined-a.joined;
+      });
+
+      /* REMOVE DUPLICATES */
+      var seen={};
+      members=members.filter(function(member){
+        var key=member.username.toLowerCase();
+        if(seen[key]) return false;
+        seen[key]=true;
+        return true;
+      });
+
+      /* SHOW THREE NEWEST */
+      var newest=members.slice(0,3);
+
+      container.innerHTML='';
+
+      if(newest.length===0){
+        container.innerHTML='<div class="new-members-status">No member data available.</div>';
+        status.textContent='';
+        return;
+      }
+
+      newest.forEach(function(member,index){
+
+        var card=document.createElement('div');
+        card.className='new-member-card';
+
+        var avatarBox=document.createElement('div');
+        avatarBox.className='new-member-avatar';
+        avatarBox.textContent=member.username.charAt(0).toUpperCase();
+
+        var info=document.createElement('div');
+        info.className='new-member-info';
+
+        var nameLink=document.createElement('a');
+        nameLink.href='https://www.chess.com/member/'+encodeURIComponent(member.username);
+        nameLink.target='_blank';
+        nameLink.rel='noopener noreferrer';
+        nameLink.className='profile-name-link';
+
+        var name=document.createElement('div');
+        name.className='new-member-name';
+        name.textContent='@'+member.username;
+
+        nameLink.appendChild(name);
+
+        var date=document.createElement('div');
+        date.className='new-member-date';
+        date.textContent='JOINED '+timeAgo(member.joined);
+
+        info.appendChild(nameLink);
+        info.appendChild(date);
+
+        var rank=document.createElement('div');
+        rank.className='new-member-rank';
+        rank.textContent='#'+(index+1);
+
+        card.appendChild(avatarBox);
+        card.appendChild(info);
+        card.appendChild(rank);
+
+        container.appendChild(card);
+
+        /* LOAD MEMBER AVATAR */
+        fetch('https://api.chess.com/pub/player/'+encodeURIComponent(member.username))
+          .then(function(response){
+            if(!response.ok) throw new Error('Avatar unavailable');
+            return response.json();
+          })
+          .then(function(profile){
+            if(profile.avatar){
+              var img=document.createElement('img');
+              img.alt=member.username;
+              img.src=profile.avatar;
+              img.onerror=function(){
+                avatarBox.textContent=member.username.charAt(0).toUpperCase();
+              };
+              avatarBox.textContent='';
+              avatarBox.appendChild(img);
+            }
+          })
+          .catch(function(){});
+      });
+
+      status.textContent='THE 3 MOST RECENTLY JOINED MEMBERS';
+    })
+    .catch(function(){
+      container.innerHTML='<div class="new-members-status">Could not load members right now.</div>';
+      status.textContent='Chess.com API unavailable';
+    });
+}
+
+/* INITIAL LOAD */
+loadMemberCount();
+loadNewestMembers();
+
+/* REFRESH EVERY 5 MINUTES */
+setInterval(loadMemberCount,300000);
+setInterval(loadNewestMembers,300000);
+
+})();
+</script>
 
 </div>
+</div>
+
+
+
+
